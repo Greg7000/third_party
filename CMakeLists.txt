@@ -25,6 +25,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 cmake_minimum_required(VERSION 3.31.8)
 project(tritonthirdparty LANGUAGES C CXX)
+set(PROTOBUF_VERSION 3.21.12)
 #
 # ExternalProject Dependencies
 #
