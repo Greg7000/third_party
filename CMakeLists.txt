@@ -25,7 +25,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 cmake_minimum_required(VERSION 3.31.8)
 project(tritonthirdparty LANGUAGES C CXX)
-set(PROTOBUF_VERSION 3.21.12)
+#set(PROTOBUF_VERSION 3.21.12)
 #
 # ExternalProject Dependencies
 #
@@ -111,10 +111,26 @@ ExternalProject_Add(curl
 # Build grpc-repo project from grpc-repo
 # Example: https://github.com/grpc/grpc/blob/232dceb3a38fa15e8ce5c58ba6b9f9d379076f7e/examples/cpp/helloworld/cmake_externalproject/CMakeLists.txt
 #
+#ExternalProject_Add(grpc-repo
+#  PREFIX grpc-repo
+#  GIT_REPOSITORY "https://github.com/grpc/grpc.git"
+#  GIT_TAG "v1.54.3"
+#  SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/grpc-repo/src/grpc"
+#  EXCLUDE_FROM_ALL ON
+#  CONFIGURE_COMMAND ""
+#  BUILD_COMMAND ""
+#  INSTALL_COMMAND ""
+#  TEST_COMMAND ""
+#  CMAKE_CACHE_ARGS
+#    -DCMAKE_CXX_STANDARD:STRING=${TRITON_MIN_CXX_STANDARD}
+#  # TODO(nnoble): remove this patch when the fix for https://github.com/abseil/abseil-cpp/issues/1769 is integrated within our dependencies
+#  PATCH_COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/tools/patch.py apply -i -d ${CMAKE_CURRENT_BINARY_DIR}/grpc-repo/src/grpc/third_party/abseil-cpp ${CMAKE_CURRENT_SOURCE_DIR}/tools/abseil_no_rebuild.patch
+#  COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/tools/install_src.py --src <SOURCE_DIR> ${INSTALL_SRC_DEST_ARG} --dest-basename=grpc_1.54.3
+#)
 ExternalProject_Add(grpc-repo
   PREFIX grpc-repo
-  GIT_REPOSITORY "https://github.com/grpc/grpc.git"
-  GIT_TAG "v1.54.3"
+  GIT_REPOSITORY "https://github.com/Greg7000/grpc.git"
+  GIT_TAG "grpc_fg"
   SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/grpc-repo/src/grpc"
   EXCLUDE_FROM_ALL ON
   CONFIGURE_COMMAND ""
